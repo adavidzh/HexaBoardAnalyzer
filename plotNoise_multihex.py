@@ -10,7 +10,7 @@ n_hexa = 1
 def getSensorMap():
 
     sens_map = {}
-    fmap = open("//Users/artur/Dropbox/Work/LLR/HGCAL/SK2cms/hexaboard/fromDocDB/Skiroc2CMS_sensor_map_simplified.csv","r")
+    fmap = open("Skiroc2CMS_sensor_map_simplified.csv","r")
 
     for line in fmap.readlines():
         #print len(line.split(','))
