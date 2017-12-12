@@ -51,7 +51,8 @@ def createTree(fname):
 
     fout = rt.TFile( foutname, 'recreate' )
     tree = rt.TTree( 'sk2cms', 'sk2cms tree' )
-
+    tree.SetMarkerStyle(20)
+    
     # variables for tree
     event_b = np.array(  [ 0 ] , dtype=int)
     chip_b = np.array(  [ 0 ] , dtype=int)
