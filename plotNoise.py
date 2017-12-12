@@ -3,8 +3,8 @@
 import glob, sys, os, array, math
 import numpy as np
 import ROOT as rt
-from scipy.stats import norm
-from scipy import signal
+#from scipy.stats import norm
+#from scipy import signal
 
 #rt.TGaxis.SetMaxDigits(3)
 

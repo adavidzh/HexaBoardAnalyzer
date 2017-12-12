@@ -64,6 +64,8 @@ def createTree(fname):
     roll_b = array('i', nsca * [ 0 ])
     ts_b = array('i', nsca * [ 0 ])
 
+    dacinj_b = np.array(  [ 0 ] , dtype=int)
+    
     # charges
     hgain_b = array('i', nchips * nsca * nchans * [ -99 ])
     lgain_b = array('i', nchips * nsca * nchans * [ -99 ])
@@ -79,6 +81,7 @@ def createTree(fname):
     tree.Branch( 'event', event_b, 'event/I' )
     tree.Branch( 'chip', chip_b, 'chip/I' )
     tree.Branch( 'roll', roll_b, 'roll[13]/I' )
+    tree.Branch( 'dacinj', dacinj_b, 'dacinj/I' )
     tree.Branch( 'timesamp', ts_b, 'timesamp[13]/I' )
     tree.Branch( 'hg', hgain_b, 'hg[' + str(nchips) + '][13][64]/I' )
     tree.Branch( 'lg', lgain_b, 'lg[' + str(nchips) + '][13][64]/I' )
@@ -130,6 +133,10 @@ def createTree(fname):
                 print("Stopping!")
                 break
 
+            #Save DAC value for injected charge
+            dacinj = int(header_items[7],16)
+                        
+            
             if chip > 3: continue
             '''
             if chip > 0:
@@ -142,6 +149,7 @@ def createTree(fname):
             chip_b[0] = chip
             for i in range(nsca): roll_b[i] = roll[i]
             #print roll, roll_b
+            dacinj_b[0] = dacinj
 
             # time pos
             timepos = getTimePos(roll)
